@@ -1,10 +1,10 @@
-import { Colors } from "../models/colors";
 import { Logger } from "./logger";
 import { Injectable } from "@angular/core";
+import { Colors} from "../models/colors";
 
 @Injectable()
 
-export class ColorsImmutable implements Colors {
+export class ColorsMutable implements Colors {
     private colorList: string[] = [];
 
     constructor(private logger: Logger) {
@@ -12,13 +12,13 @@ export class ColorsImmutable implements Colors {
     }
 
     public getAll() {
-        this.logger.log("Retrieved color list immutable");
+        this.logger.log("Retrieved color list");
         return this.colorList;
     }
 
     public addColor(color: string) {
-        this.logger.log("Added color  to list immutable: " + color);
-        this.colorList = this.colorList.concat(color);
+        this.logger.log("Added color  to list: " + color);
+        this.colorList.push(color);
     }
 
 }

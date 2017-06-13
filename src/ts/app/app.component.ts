@@ -1,5 +1,6 @@
-import { Colors } from "./services/colors";
-import { Component } from "@angular/core";
+import { Colors } from "./models/colors";
+import { Component, Inject } from "@angular/core";
+import { ColorToken } from "./tokens/colors-token";
 
 @Component({
     selector: "main",
@@ -11,7 +12,7 @@ import { Component } from "@angular/core";
 export class AppComponent {
 
     public colors: string[] = [];
-    constructor(private colorsSvc: Colors) {
+    constructor(@Inject(ColorToken) private colorsSvc: Colors) {
         this.colorsSvc.addColor("blue");
         this.colorsSvc.addColor("red");
         this.colorsSvc.addColor("white");
